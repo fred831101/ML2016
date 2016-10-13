@@ -54,7 +54,7 @@ int main()
     double realanswer[12][471];
 
     //real PM2.5 answer storage(y)
-    for(int month=0;month<12;month++){
+    /*for(int month=0;month<12;month++){
       for(int hour=9;hour<480;hour++)
         realanswer[month][hour-9]=traindata[month][9][hour];
     }
@@ -65,7 +65,7 @@ int main()
       cout<<itercounter<<' ';
       cout<<wparameter_now[2][2]<<endl;
       //cout<<iteranswer[0][0]<<endl<<endl;
-      //saveparameters(bparameter_now,wparameter_now);
+      saveparameters(bparameter_now,wparameter_now);
       }
     //one iteration
     //calculate all iterated PM2.5
@@ -103,10 +103,16 @@ int main()
          wparameter_now[i][j] = wparameter_now[i][j] + (N_VALUE * wcount);
     }
     }
-    }
-    //saveparameters(bparameter_now,wparameter_now);
+    }*/
     fin.close();
+    fstream fin2;
     fin.open("test2.csv",ios::in);
+    fin2.open("parameter_500k.csv",ios::in);
+    fin2 >> bparameter_now;
+    for(int i=0;i<18;i++)
+     for(int j=0;j<9;j++){
+        fin2>>wparameter_now[i][j];
+     }
     fout.open("kaggle_best.csv",ios::out);
     fout<<"id,value\n";
     for(int tcase=0;tcase<240;tcase++){
@@ -121,6 +127,7 @@ int main()
        fout<<tout;
        fout<<endl;
     }
+    fin2.close();
     fin.close();
     fout.close();
     return 0;

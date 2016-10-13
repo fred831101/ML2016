@@ -47,11 +47,10 @@ int main()
 
     //initialize parameters
     double bparameter_now=0;
-    //double bparameter_next=0;
     double wparameter_now[18][9]={0};
-    //double wparameter_next[18][9]={0};
-    double iteranswer[12][471];
-    double realanswer[12][471];
+    double iteranswer[12][471]; // Value of (b + sum(w * x_n) )
+    double realanswer[12][471]; // Value of y
+     // Loss function will be realanswer - iteranswer  !!
 
     //real PM2.5 answer storage(y)
     for(int month=0;month<12;month++){
@@ -59,15 +58,8 @@ int main()
         realanswer[month][hour-9]=traindata[month][9][hour];
     }
 
-
+    //Iterations of Gradient Descent
     for(int itercounter=0;itercounter<MAX_ITERATION;itercounter++){
-     /*if (itercounter%250==0){
-      cout<<itercounter<<' ';
-      cout<<wparameter_now[2][2]<<endl;
-      //cout<<iteranswer[0][0]<<endl<<endl;
-      //saveparameters(bparameter_now,wparameter_now);
-     }*/
-    //one iteration
     //calculate all iterated PM2.5
     for(int month=0;month<12;month++){
       for(int hour=0;hour<471;hour++){
@@ -80,14 +72,14 @@ int main()
         iteranswer[month][hour] = iteratedPM;
       }
     }
-    //calculate new b
+    //calculate new b with Gradient descent
     double bcount=0;
     for(int month=0;month<12;month++)
       for(int hour=0;hour<471;hour++){
         bcount += (realanswer[month][hour] - iteranswer[month][hour]);
     }
     bparameter_now = bparameter_now + ( N_VALUE * bcount);
-    //calculate new ws
+    //calculate each new w with Gradient descent
     for(int i=0;i<18;i++)
       for(int j=0;j<9;j++){
          double wcount=0;
@@ -95,7 +87,7 @@ int main()
          for(int month=0;month<12;month++)
            for(int hour=0;hour<471;hour++){
              tempans = realanswer[month][hour] - iteranswer[month][hour];
-             tempans *= traindata[month][i][hour+j];
+             tempans *= traindata[month][i][hour+j]; //Chain Rule term
              wcount += tempans;
          }
          wparameter_now[i][j] = wparameter_now[i][j] + (N_VALUE * wcount);

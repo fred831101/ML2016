@@ -61,12 +61,12 @@ int main()
 
 
     for(int itercounter=0;itercounter<MAX_ITERATION;itercounter++){
-     if (itercounter%250==0){
+     /*if (itercounter%250==0){
       cout<<itercounter<<' ';
       cout<<wparameter_now[2][2]<<endl;
       //cout<<iteranswer[0][0]<<endl<<endl;
       //saveparameters(bparameter_now,wparameter_now);
-     }
+     }*/
     //one iteration
     //calculate all iterated PM2.5
     for(int month=0;month<12;month++){

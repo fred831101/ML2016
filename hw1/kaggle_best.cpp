@@ -117,7 +117,7 @@ int main()
     fout<<"id,value\n";
     for(int tcase=0;tcase<240;tcase++){
        fout<<"id_"<<tcase<<',';
-       double tout=0;
+       double tout=bparameter_now;
        for(int i=0;i<18;i++)
         for(int j=0;j<9;j++){
            double temp;

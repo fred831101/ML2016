@@ -57,10 +57,13 @@ int main(int argc, char** argv){
       }
     }
 
+    //initialization of logistic parameters
     double bparameter=0;
     double wparameter[57]={0};
-    double iter_diff[4001]={0};
+    double iter_diff[4001]={0}; // for future storage of y-f(x)
 
+    //One iteration of logistic regression
+    
     for(int itercounter=0;itercounter<MAX_ITERATION;itercounter++){
      if (itercounter%250==0){ //display use
       cout<<setw(7)<<itercounter<<' ';

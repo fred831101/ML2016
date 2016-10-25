@@ -94,8 +94,8 @@ int main(int argc, char** argv){
       }
       wparameter[i] += (N_VALUE * wcount);
     }
-
     }
+    
     //save parameters
     fout.open(argv[2],ios::out);
     fout << bparameter <<endl;

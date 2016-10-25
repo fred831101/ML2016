@@ -1,4 +1,4 @@
 #!/bin/bash
-g++ -c logistic_regression.cpp
-g++ -o run1 logistic_regression.o
+g++ -c deep_twolayer.cpp
+g++ -o run1 deep_twolayer.o
 ./run1 $1 $2

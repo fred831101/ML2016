@@ -9,7 +9,7 @@
 using namespace std;
 
 #define N_VALUE 0.001
-#define MAX_ITERATION 3000
+#define MAX_ITERATION 6000
 
 
 int main(int argc, char** argv){

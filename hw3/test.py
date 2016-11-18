@@ -1,14 +1,12 @@
-import pickle
+import pandas as pd
 import numpy as np
-import csv, math
+import tensorflow as tf
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Convolution2D, MaxPooling2D
 from keras.models import load_model
-import tensorflow as tf
 from keras.backend.tensorflow_backend import set_session
-import pandas as pd
 import sys
 
 config = tf.ConfigProto()
